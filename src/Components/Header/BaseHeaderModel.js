@@ -16,6 +16,7 @@ import {
   }  from 'react-bootstrap';
   
   class NavbarInstance extends React.Component {
+    
     render() {
       return (
         <Navbar bg="dark" expand="lg" variant="dark" fixed="top">
@@ -56,8 +57,23 @@ class NavbarInstance2 extends React.Component{
                     height="30"
                     className="d-inline-block align-top"
                 />
-                {' NIM FINDER PROJEKT'}
+                {' NIM FINDER PROJEKT '}
                 </Navbar.Brand>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                    <Nav.Link onClick={() => this.props.setterAction('home', null)}>Hunt for your crush's NIM</Nav.Link>
+                    <Nav.Link onClick={() => this.props.setterAction('about', null)}>About MI</Nav.Link>
+                    <NavDropdown title="Account-Control" id="basic-nav-dropdown">
+                        <NavDropdown.Item onClick={() => this.props.setterAction('login', null)}>Login</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item onClick={() => this.props.setterAction('register', null)}>Register</NavDropdown.Item>
+                    </NavDropdown>
+                    </Nav>
+                    <Form inline>
+                    <FormControl type="text" placeholder="||||||||||||||||||||||||||||||||||||||||||||||" className="mr-sm-2" />
+                    <Button variant="outline-success">Battery Left: 100%</Button>
+                    </Form>
+                </Navbar.Collapse>
             </Navbar>
         )
     }
@@ -66,7 +82,7 @@ class NavbarInstance2 extends React.Component{
 class BaseHeaderModel extends React.Component{
     render(){
         return(
-            <NavbarInstance></NavbarInstance>
+            <NavbarInstance2 setterAction={this.props.setterAction}></NavbarInstance2>
         )
     }
 }

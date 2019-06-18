@@ -14,6 +14,8 @@ import BrowserDetection from 'react-browser-detection';
 import BaseHeaderModel from './Components/Header/BaseHeaderModel';
 import BaseFooterModel from './Components/Footer/BaseFooterModel';
 import BaseHomeModel from './Components/Body/BaseHomeModel';
+import LoginModel from './Components/Body/LoginModel';
+import StudentInfoModel from './Components/Body/StudentInfoModel.js';
 
 //Default App:
 /*
@@ -76,35 +78,93 @@ class App extends React.Component {
     super();
     this.state = {
       loading: false,
+      pageTitle: 'home',
+      data: {
+        status : undefined
+      } //empty container for json
     }
     //Bind the 'this' context to setter method:
     this.setStateHandler = this.setStateHandler.bind(this);
   }
 
   //State setter methods: (this method will be passed to children to be used there)
-  setStateHandler(){
-    //event.preventDefault();
+  setStateHandler(targetPageTitle, newData){
+    console.log("CALLED STATE CHANGER")
+    if(newData === null){
+      //Means should be unchanged/untouched:
+      newData=this.state.data;
+    }
+    if(targetPageTitle === null){
+      //Means should be unchanged/untouched:
+      targetPageTitle=this.state.pageTitle;
+    }
     this.setState({
       loading: false, //loading should be over by then
-    })
+      pageTitle: targetPageTitle,
+      data: newData
+    });
   }
 
+  /*
+  setStateHandler = targetPageTitle => {
+    console.log("CALLED STATE CHANGER")
+    this.setState({
+      loading: false, //loading should be over by then
+      pageTitle: targetPageTitle
+    });
+  }*/
+
+  /*
   //When this component is first mounted: (Only runs once)
   componentDidMount() {
     this.setState({loading: true})
     //fetch the data as response
     //get response then turn into json format
+  }*/
+
+  /*
+  componentDidUpdate() {
+    
+  }*/
+
+  pageRenderLogic(){
+    const date = new Date();
+    if(this.state.pageTitle === 'home')
+      return <BaseHomeModel setterAction={this.setStateHandler} browserName={<BrowserIdentification />} dateInfo={date} token={this.state.data['token']} />
+    else if(this.state.pageTitle === 'login')
+      return <LoginModel setterAction={this.setStateHandler} />
   }
   
+  renderStudentInfos(data){
+    if (this.state.data["payload"] !== undefined ){
+        const searchResult = data.map(datum => <StudentInfoModel 
+            key={datum.nim_tpb} 
+            name={datum.name} 
+            nim_tpb={datum.nim_tpb}
+            nim_jur={datum.nim_jur}
+            prodi = {datum.prodi} 
+        />)
+
+        return searchResult;
+    }
+    return null;
+}
+
   //Main render method:
   render() {
-    const date = new Date();
     
     return (
       <div>
-        <BaseHeaderModel />
-        <BaseHomeModel setterAction={this.setStateHandler} browserName={<BrowserIdentification />} dateInfo={date}  />
-        <BaseFooterModel />
+        {this.state.pageTitle}
+        <BaseHeaderModel setterAction={this.setStateHandler}/>
+        {this.pageRenderLogic()}
+        <p className="text-center">Result:</p>
+        <p className="text-center">Status : {this.state.data['status'] !== undefined ? this.state.data['status'] : 'NULL' }</p>
+        <p className="text-center">Token : {this.state.data["token"] !== undefined ? this.state.data["token"] : 'No Token Yet' }</p>
+        <div className="text-center">{
+            this.renderStudentInfos(this.state.data["payload"])
+        }</div>
+        <BaseFooterModel setterAction={this.setStateHandler}/>
       </div>
     )
   }

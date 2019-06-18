@@ -5,8 +5,9 @@ import React from "react";
 class RequestController extends React.Component{
     //attributes:
     static baseURL = 'https://api.stya.net/nim/';
+    static defaultPageTitle = 'home';
 
-    static registerRequest(setterAction1, setterAction2){
+    static registerRequest(setterAction){
         //Data to be sent:
         let dataDetails = {
             'username' : 'haisayang31',
@@ -32,14 +33,13 @@ class RequestController extends React.Component{
             })
                 .then(response => response.json())
                 .then(response => {
-                    setterAction2(response);
                     console.log(response);
-                    setterAction1();
+                    setterAction(RequestController.defaultPageTitle,response);
                 })
     }
 
     //Login Request:
-    static loginRequest(setterAction1, setterAction2){
+    static loginRequest(setterAction){
         //Data to be sent:
         let dataDetails = {
             'username' : 'haisayang31',
@@ -65,14 +65,13 @@ class RequestController extends React.Component{
             })
                 .then(response => response.json())
                 .then(response => {
-                    setterAction2(response);
                     console.log(response);
-                    setterAction1();
+                    setterAction(RequestController.defaultPageTitle,response);
                 })
     }
 
     //Get Request:
-    static getRequest(setterAction1, setterAction2, receivedToken){
+    static getRequest(setterAction, receivedToken){
         //Finally: do the fetch request!
         fetch(RequestController.baseURL+'byname?name=Jason&count=2', 
             {
@@ -84,9 +83,8 @@ class RequestController extends React.Component{
             })
                 .then(response => response.json())
                 .then(response => {
-                    setterAction2(response);
                     console.log(response);
-                    setterAction1();
+                    setterAction(RequestController.defaultPageTitle,response);
                 })
     }
 }

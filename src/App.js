@@ -1,14 +1,19 @@
 import React from 'react'; //if import {Component} you don't have to extend React.Component, only Component 
-import logo from './logo.svg';
+//import logo from './logo.svg';
+//Bootstrap Dependencies:
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import $ from 'jquery';
+//import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
 
 //miscellaneous dependencies:
 import BrowserDetection from 'react-browser-detection';
 
 //Import components:
-import BaseHeaderModel from './Components/BaseHeaderModel';
-import BaseFooterModel from './Components/BaseFooterModel';
-import BaseHomeModel from './Components/BaseHomeModel';
+import BaseHeaderModel from './Components/Header/BaseHeaderModel';
+import BaseFooterModel from './Components/Footer/BaseFooterModel';
+import BaseHomeModel from './Components/Body/BaseHomeModel';
 
 //Default App:
 /*

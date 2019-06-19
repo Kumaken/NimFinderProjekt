@@ -1,0 +1,72 @@
+//Basic Dependency:
+import React from "react";
+//Bootstrap Dependency:
+import {
+    Jumbotron,
+    Navbar,
+    Form,
+    FormControl,
+    Button,
+    InputGroup
+  }  from 'react-bootstrap';
+//Component Dependency:
+import ControllerBuilder from "./../../Controllers/ControllerBuilder"; //require doesn't simply work with direct calls to inner class methods. better use import in this case.
+
+//class Components:
+class SearchBarModel extends React.Component{
+    constructor (props) {
+        super(props);
+        this.state = {
+            searchString: '',
+        }
+        //Bindings:
+        this.searchBarLayout = this.searchBarLayout.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    async updateState(_searchString){
+        console.log('INCOMING: '+_searchString)
+        await this.setState({
+            searchString: _searchString
+        })
+        console.log('NOW: '+this.state.searchString);
+    }
+
+    async handleClick(){
+        console.log(this.state.searchString)
+        let controller = new ControllerBuilder().withSetter(this.props.setterAction).withPurpose(this.props.purpose).withSearchString(this.state.searchString).withToken(this.props.token).build()
+        console.log(controller.searchString)
+        await controller.requestLogic();
+    }
+
+    searchBarLayout(){
+        return(
+            <Jumbotron>
+            <Navbar bg="dark" expand="lg" variant="dark">
+                <Navbar.Collapse id="basic-navbar-nav">
+                    
+                    <InputGroup id='searchField' className="mb-3" onChange={(e) => this.updateState(e.target.value)}>
+                        <Form inline>
+                        <FormControl type="text" placeholder="Enter NIM or Name"className="mr-sm-2"/>
+                        </Form>
+                    </InputGroup>
+                    <Button variant="outline-success" onClick={() => this.handleClick()}>Search!</Button>
+                    
+                </Navbar.Collapse>
+            </Navbar>
+            </Jumbotron>
+        )
+    }
+
+    render(){
+        return( 
+            <>
+                {this.searchBarLayout()}
+            </>
+        )
+    }
+}
+
+
+//expose this .js file so it can be imported by other modules:
+export default SearchBarModel

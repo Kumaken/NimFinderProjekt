@@ -1,21 +1,17 @@
 //Basic Dependency:
 import React from "react";
-//import Styles from './../Styles/Style.css'; //import is needed for the styling to work
 //Bootstrap Dependencies:
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import $ from 'jquery';
-//import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import {
     Navbar,
     Nav,
     NavDropdown,
-    Form,
-    FormControl,
-    Button
   }  from 'react-bootstrap';
-  
-  class NavbarInstance extends React.Component {
+//Components Dependencies:
+import AccountModal from './../Body/AccountModal';
+
+  /*class NavbarInstance extends React.Component {
     
     render() {
       return (
@@ -43,13 +39,13 @@ import {
         </Navbar>
       );
     }
-  }
+  }*/
 
 class NavbarInstance2 extends React.Component{
     render(){
         return(
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">
+            <Navbar bg="dark" variant="dark" sticky="top">
+                <Nav.Link onClick={() => this.props.setterAction('home', null)}>
                 <img
                     alt=""
                     src="./favicon.ico"
@@ -58,10 +54,10 @@ class NavbarInstance2 extends React.Component{
                     className="d-inline-block align-top"
                 />
                 {' NIM FINDER PROJEKT '}
-                </Navbar.Brand>
+                </Nav.Link>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                    <Nav.Link onClick={() => this.props.setterAction('home', null)}>Hunt for your crush's NIM</Nav.Link>
+                    <Nav.Link onClick={() => this.props.setterAction('search', null)}>Hunt for your crush's NIM</Nav.Link>
                     <Nav.Link onClick={() => this.props.setterAction('about', null)}>About MI</Nav.Link>
                     <NavDropdown title="Account-Control" id="basic-nav-dropdown">
                         <NavDropdown.Item onClick={() => this.props.setterAction('login', null)}>Login</NavDropdown.Item>
@@ -69,10 +65,8 @@ class NavbarInstance2 extends React.Component{
                         <NavDropdown.Item onClick={() => this.props.setterAction('register', null)}>Register</NavDropdown.Item>
                     </NavDropdown>
                     </Nav>
-                    <Form inline>
-                    <FormControl type="text" placeholder="||||||||||||||||||||||||||||||||||||||||||||||" className="mr-sm-2" />
-                    <Button variant="outline-success">Battery Left: 100%</Button>
-                    </Form>
+                    {console.log(this.props.currentUser)}
+                    <AccountModal currentUser={this.props.currentUser} setterAction={this.props.setterAction}/>
                 </Navbar.Collapse>
             </Navbar>
         )
@@ -82,7 +76,7 @@ class NavbarInstance2 extends React.Component{
 class BaseHeaderModel extends React.Component{
     render(){
         return(
-            <NavbarInstance2 setterAction={this.props.setterAction}></NavbarInstance2>
+            <NavbarInstance2 currentUser={this.props.currentUser} setterAction={this.props.setterAction}></NavbarInstance2>
         )
     }
 }

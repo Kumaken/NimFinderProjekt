@@ -1,20 +1,13 @@
 //Basic Dependency:
 import React from "react";
-//request dependency:
-import RequestController from '../../Controllers/RequestController';
 //Bootstrap Dependency:
 import {
     Jumbotron,
-    Button
   }  from 'react-bootstrap';
 //Component Dependency:
-import ClickHandlers from '../../Controllers/ClickHandlers.js';
 
 //class Components:
 class BaseHomeModel extends React.Component{
-    constructor (props) {
-        super(props);
-    }
 
     homePageLayout(){
         return(
@@ -28,17 +21,6 @@ class BaseHomeModel extends React.Component{
                     <br></br>
                 </Jumbotron>
                 <Jumbotron>
-                    <p className="text-center">Enter necessary search parameters:</p>
-                    <p className="text-center">
-                        <Button variant="primary" onClick={() => ClickHandlers.handleClickRegister(this.props.setterAction)}>REGISTER</Button>
-                    </p>
-                    <p className="text-center">
-                        <Button variant="primary" onClick={() =>ClickHandlers.handleClickLogin(this.props.setterAction)}>LOGIN</Button>
-                    </p>
-                    <p className="text-center">
-                        <Button variant="primary" onClick={() =>ClickHandlers.handleClickByName(this.props.setterAction, this.props.token)}>BYNAME</Button>
-                    </p>
-                    <br></br>
                     
                 </Jumbotron>
             </>

@@ -9,21 +9,21 @@ import UserDataModel from './UserDataModel.js';
 
 
 //class Components:
-class LoginModel extends React.Component{
+class RegisterModel extends React.Component{
     constructor (props) {
         super(props);
 
         //Bindings:
-        this.loginPageLayout = this.loginPageLayout.bind(this);
+        this.registerPageLayout = this.registerPageLayout.bind(this);
     }
 
 
 
-    loginPageLayout(){
+    registerPageLayout(){
         return(
             <Jumbotron>
-                <p> LOGIN ASSHOLE </p>
-                <UserDataModel setterAction={this.props.setterAction} purpose={'login'} />
+                <p> Register ASSHOLE </p>
+                <UserDataModel setterAction={this.props.setterAction} purpose={'register'} />
             </Jumbotron>
         )
     }
@@ -31,7 +31,7 @@ class LoginModel extends React.Component{
     render(){
         return( 
             <>
-                {this.loginPageLayout()}
+                {this.registerPageLayout()}
             </>
         )
     }
@@ -39,4 +39,4 @@ class LoginModel extends React.Component{
 
 
 //expose this .js file so it can be imported by other modules:
-export default LoginModel
+export default RegisterModel

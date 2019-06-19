@@ -5,25 +5,24 @@ import {
     Jumbotron,
   }  from 'react-bootstrap';
 //Component Dependency:
-import UserDataModel from './UserDataModel.js';
+import SearchBarModel from './SearchBarModel.js';
 
 
 //class Components:
-class LoginModel extends React.Component{
+class SearchModel extends React.Component{
     constructor (props) {
         super(props);
-
         //Bindings:
-        this.loginPageLayout = this.loginPageLayout.bind(this);
+        this.searchPageLayout = this.searchPageLayout.bind(this);
     }
 
 
 
-    loginPageLayout(){
+    searchPageLayout(){
         return(
             <Jumbotron>
-                <p> LOGIN ASSHOLE </p>
-                <UserDataModel setterAction={this.props.setterAction} purpose={'login'} />
+                <p> SEARCH ASSHOLE </p>
+                <SearchBarModel setterAction={this.props.setterAction} purpose={'search'} token={this.props.token}/>
             </Jumbotron>
         )
     }
@@ -31,7 +30,7 @@ class LoginModel extends React.Component{
     render(){
         return( 
             <>
-                {this.loginPageLayout()}
+                {this.searchPageLayout()}
             </>
         )
     }
@@ -39,4 +38,4 @@ class LoginModel extends React.Component{
 
 
 //expose this .js file so it can be imported by other modules:
-export default LoginModel
+export default SearchModel

@@ -1,11 +1,9 @@
 import React from 'react'; //if import {Component} you don't have to extend React.Component, only Component 
-//import logo from './logo.svg';
+
 //Bootstrap Dependencies:
-import 'bootstrap/dist/css/bootstrap.min.css';
-//import $ from 'jquery';
-//import Popper from 'popper.js';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import './App.css';
+import {
+  Table,
+}  from 'react-bootstrap';
 
 //miscellaneous dependencies:
 import BrowserDetection from 'react-browser-detection';
@@ -15,44 +13,13 @@ import BaseHeaderModel from './Components/Header/BaseHeaderModel';
 import BaseFooterModel from './Components/Footer/BaseFooterModel';
 import BaseHomeModel from './Components/Body/BaseHomeModel';
 import LoginModel from './Components/Body/LoginModel';
+import RegisterModel from './Components/Body/RegisterModel';
 import StudentInfoModel from './Components/Body/StudentInfoModel.js';
+import SearchModel from './Components/Body/SearchModel.js';
+import LoadingModel from './Components/Body/LoadingModel';
+import RefreshController from './Controllers/RefreshController';
 
-//Default App:
-/*
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}*/
-
-/*
-//Render function
-function RenderApp(){
-  return (
-    <div>
-      <BaseHeaderModel />
-      <BaseHomeModel />
-      <BaseFooterModel />
-    </div>
-  )
-}*/
-
-
+//Browser Identificator
 const browserHandler = {
   chrome: () => "fellow chrome user...",
   googlebot: () => "GoogleBot!",
@@ -79,40 +46,48 @@ class App extends React.Component {
     this.state = {
       loading: false,
       pageTitle: 'home',
+      currentUser: 'anonymous',
       data: {
         status : undefined
       } //empty container for json
     }
     //Bind the 'this' context to setter method:
     this.setStateHandler = this.setStateHandler.bind(this);
+    this.setLoadingState = this.setLoadingState.bind(this);
   }
 
   //State setter methods: (this method will be passed to children to be used there)
-  setStateHandler(targetPageTitle, newData){
+  async setStateHandler(targetPageTitle, newData, username){
     console.log("CALLED STATE CHANGER")
-    if(newData === null){
+    if(newData === null || newData === undefined){
       //Means should be unchanged/untouched:
       newData=this.state.data;
     }
-    if(targetPageTitle === null){
+    if(targetPageTitle === null || targetPageTitle === undefined){
       //Means should be unchanged/untouched:
       targetPageTitle=this.state.pageTitle;
     }
-    this.setState({
+    if(username === null || username === undefined){
+      //Means should be unchanged/untouched:
+      username=this.state.currentUser;
+    }
+    await this.setState({
       loading: false, //loading should be over by then
       pageTitle: targetPageTitle,
-      data: newData
+      data: newData,
+      currentUser: username
     });
   }
 
-  /*
-  setStateHandler = targetPageTitle => {
-    console.log("CALLED STATE CHANGER")
-    this.setState({
-      loading: false, //loading should be over by then
-      pageTitle: targetPageTitle
-    });
-  }*/
+  //Change to Loading State:
+  async setLoadingState(){
+    console.log("Loading set to true!")
+    await this.setState({
+      loading: true
+    })
+  }
+
+  s
 
   /*
   //When this component is first mounted: (Only runs once)
@@ -129,10 +104,16 @@ class App extends React.Component {
 
   pageRenderLogic(){
     const date = new Date();
-    if(this.state.pageTitle === 'home')
+    if(this.state.loading)
+      return <LoadingModel height="2000"/>
+    else if(this.state.pageTitle === 'home')
       return <BaseHomeModel setterAction={this.setStateHandler} browserName={<BrowserIdentification />} dateInfo={date} token={this.state.data['token']} />
     else if(this.state.pageTitle === 'login')
       return <LoginModel setterAction={this.setStateHandler} />
+    else if(this.state.pageTitle === 'register')
+      return <RegisterModel setterAction={this.setStateHandler} />
+    else if(this.state.pageTitle === 'search')
+      return <SearchModel setterAction={this.setStateHandler} token={this.state.data["token"]}/>
   }
   
   renderStudentInfos(data){
@@ -145,25 +126,32 @@ class App extends React.Component {
             prodi = {datum.prodi} 
         />)
 
-        return searchResult;
+        return (
+          <Table striped bordered hover variant="dark">
+              <tr>
+                  <th>Name</th>
+                  <th>Prodi</th>
+                  <th>NIM_TPB</th>
+                  <th>NIM_Jurusan</th>
+              </tr>
+            {searchResult}
+          </Table>
+        )
     }
     return null;
 }
 
   //Main render method:
   render() {
-    
     return (
-      <div>
-        {this.state.pageTitle}
-        <BaseHeaderModel setterAction={this.setStateHandler}/>
+      <div height="2000">
+        <RefreshController setterLoadingState ={this.setLoadingState}/>
+        <BaseHeaderModel currentUser={this.state.currentUser} setterAction={this.setStateHandler}/>
         {this.pageRenderLogic()}
         <p className="text-center">Result:</p>
         <p className="text-center">Status : {this.state.data['status'] !== undefined ? this.state.data['status'] : 'NULL' }</p>
         <p className="text-center">Token : {this.state.data["token"] !== undefined ? this.state.data["token"] : 'No Token Yet' }</p>
-        <div className="text-center">{
-            this.renderStudentInfos(this.state.data["payload"])
-        }</div>
+        {this.renderStudentInfos(this.state.data["payload"])}
         <BaseFooterModel setterAction={this.setStateHandler}/>
       </div>
     )

@@ -1,17 +1,39 @@
 //Basic Dependency:
 import React from "react";
+//Module Dependency:
+import RefreshController from './RefreshController';
 
 //Class Components:
 class RequestController extends React.Component{
-    //attributes:
-    static baseURL = 'https://api.stya.net/nim/';
-    static defaultPageTitle = 'home';
+    constructor(builder){
+        super();
+        //Attributes
+        this.baseURL = builder.baseURL;
+        this.pageTitle = builder.pageTitle;
+        this.username = builder.username;
+        this.password = builder.password;
+        this.purpose = builder.purpose;
+        this.setter = builder.setter;
+        this.token = builder.token;
+        this.searchString = builder.searchString;
+        this.count = builder.count;
+    }
 
-    static registerRequest(setterAction){
+    requestLogic(){
+        RefreshController.setterLoadingState();
+        if (this.purpose === 'login')
+            this.loginRequest();
+        else if (this.purpose === 'register')
+            this.registerRequest();
+        else
+            this.getRequest();
+    }
+
+    registerRequest(){
         //Data to be sent:
         let dataDetails = {
-            'username' : 'haisayang31',
-            'password' : 'sayangkuditepijurangLDR'
+            'username' : this.username,
+            'password' : this.password
         }
         //Create  x-www-form-urlencoded payload:
         let formBody = [];
@@ -22,7 +44,7 @@ class RequestController extends React.Component{
         }
         formBody = formBody.join('&');
         //Finally: do the fetch request!
-        fetch(RequestController.baseURL+'register', 
+        fetch(this.baseURL+'register', 
             {
                 method: 'POST',
                 headers: {
@@ -34,16 +56,18 @@ class RequestController extends React.Component{
                 .then(response => response.json())
                 .then(response => {
                     console.log(response);
-                    setterAction(RequestController.defaultPageTitle,response);
+                    this.setter(this.pageTitle,response,null);
                 })
     }
 
     //Login Request:
-    static loginRequest(setterAction){
+    loginRequest(){
         //Data to be sent:
+        console.log(this.username);
+        console.log(this.password);
         let dataDetails = {
-            'username' : 'haisayang31',
-            'password' : 'sayangkuditepijurangLDR'
+            'username' : this.username,
+            'password' : this.password
         }
         //Create  x-www-form-urlencoded payload:
         let formBody = [];
@@ -54,7 +78,7 @@ class RequestController extends React.Component{
         }
         formBody = formBody.join('&');
         //Finally: do the fetch request!
-        fetch(RequestController.baseURL+'login', 
+        fetch(this.baseURL+'login', 
             {
                 method: 'POST',
                 headers: {
@@ -66,28 +90,35 @@ class RequestController extends React.Component{
                 .then(response => response.json())
                 .then(response => {
                     console.log(response);
-                    setterAction(RequestController.defaultPageTitle,response);
+                    this.setter(this.pageTitle,response,this.username);
                 })
     }
 
     //Get Request:
-    static getRequest(setterAction, receivedToken){
+    async getRequest(){
         //Finally: do the fetch request!
-        fetch(RequestController.baseURL+'byname?name=Jason&count=2', 
+        console.log(this.searchString)
+        //if there's a NaN character in the searchString, call byName API
+        let url = '';
+        if(isNaN(this.searchString))
+            url = `${this.baseURL}byname?name=`;
+        else
+            url = `${this.baseURL}byid?query=`;
+        await fetch(`${url}${this.searchString}&count=${this.count}`, 
             {
                 method: 'GET',
                 headers: {
-                    'Auth-Token': receivedToken
+                    'Auth-Token': this.token
                 },
         
             })
                 .then(response => response.json())
-                .then(response => {
+                .then(response => { 
                     console.log(response);
-                    setterAction(RequestController.defaultPageTitle,response);
+                    this.setter(this.pageTitle,response,null);
                 })
     }
 }
 
 //expose this .js file so it can be imported by other modules:
-export default RequestController
+export default RequestController;

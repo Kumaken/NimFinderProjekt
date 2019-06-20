@@ -21,6 +21,7 @@ npm start
 
 ### Deploy to Github Page:
 npm run build
+npm run deploy
 
 ## HOW TO USE:
 1. View the homepage and enjoy the scenery:

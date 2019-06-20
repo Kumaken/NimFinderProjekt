@@ -35,8 +35,7 @@ npm run build
 4. Then you get to do some login action:
 ![login1](screenshots/login.PNG)
 
-5. If the account is not recognized, you will see this:
-![login2](screenshots/login1.PNG)
+5. If the account is not recognized, you will get an error notificaiton.
 
 6. If successful:
 ![loginOk](screenshots/loginresult1.PNG)

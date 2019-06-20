@@ -5,7 +5,7 @@
   "homepage": "https://kumaken.github.io/NimFinderProjekt/",
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^2.0.1", 
     "html-react-parser": "^0.7.1",
     "jquery": "^3.4.1",
     "mdbreact": "^4.16.0",

@@ -35,7 +35,7 @@ class RequestController extends React.Component{
             this.getRequest();
     }
 
-    registerRequest(){
+    async registerRequest(){
         //Data to be sent:
         let dataDetails = {
             'username' : this.username,
@@ -73,7 +73,7 @@ class RequestController extends React.Component{
     }
 
     //Login Request:
-    loginRequest(){
+    async loginRequest(){
         //Data to be sent:
         console.log(this.notifyOK);
         let dataDetails = {

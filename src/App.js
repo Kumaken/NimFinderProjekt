@@ -17,6 +17,7 @@ import SearchModel from './Components/Body/SearchModel.js';
 import LoadingModel from './Components/Body/LoadingModel';
 import RefreshController from './Controllers/RefreshController';
 import About from './Components/Body/About';
+
 //Browser Identificator
 const browserHandler = {
   chrome: () => "fellow chrome user...",
@@ -33,8 +34,6 @@ class BrowserIdentification extends React.Component {
     );
   }
 }
-
-
 
 //Class based components of App:
 class App extends React.Component {
@@ -64,7 +63,7 @@ class App extends React.Component {
 
   //State setter methods: (this method will be passed to children to be used there)
   async setStateHandler(targetPageTitle, newData, username, _pageOffset, _searchString){
-    console.log("CALLED STATE CHANGER")
+    //console.log("CALLED STATE CHANGER")
     if(newData === null || newData === undefined){
       //Means should be unchanged/untouched:
       newData=this.state.data;
@@ -78,18 +77,13 @@ class App extends React.Component {
       username=this.state.currentUser;
     }
     let newToken;
-    console.log('AAAAAAAAA'+newData.token);
-    console.log('BBBBBBBBB'+this.state.token);
     if(username === 'anonymous'){
-      console.log('11111');
       newToken = '';
     }
     else if(newData.token === undefined || newData.token === null){
-      console.log('22222');
       newToken = this.state.token;
     }
     else{
-      console.log('33333');
       newToken = newData.token;
     }
     if(_pageOffset === null || _pageOffset === undefined){
@@ -159,23 +153,6 @@ class App extends React.Component {
     })
     this.notified = false;
   }
-
-  
-
-
-
-  /*
-  //When this component is first mounted: (Only runs once)
-  componentDidMount() {
-    this.setState({loading: true})
-    //fetch the data as response
-    //get response then turn into json format
-  }*/
-
-  /*
-  componentDidUpdate() {
-    
-  }*/
 
   pageRenderLogic(){
     const date = new Date();

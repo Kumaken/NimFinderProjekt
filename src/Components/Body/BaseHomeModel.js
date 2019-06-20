@@ -30,7 +30,7 @@ class BaseHomeModel extends React.Component{
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">{desc}</p>
-                    <a onClick={() => this.props.setterAction(purpose)} className="btn btn-primary">{buttonText}</a>
+                    <button onClick={() => this.props.setterAction(purpose)} className="btn btn-primary">{buttonText}</button>
                 </div>
                 </div>
             </div>

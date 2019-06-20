@@ -56,11 +56,6 @@ class ControllerBuilder{
         return this
     }
 
-    withSearchString(_searchString){
-        this.searchString = _searchString;
-        return this;
-    }
-
     build(){
         return new RequestController(this);
     }

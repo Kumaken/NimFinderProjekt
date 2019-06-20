@@ -13,7 +13,7 @@ import {
 //Components Dependency
 //import ClickHandlers from "../../Controllers/ClickHandlers";
 import ControllerBuilder from "./../../Controllers/ControllerBuilder";
-import Style from './Styles/UserData.css';
+//import Style from './Styles/UserData.css';
 
 class UserDataModel extends React.Component{
     constructor(props){

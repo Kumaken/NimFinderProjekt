@@ -90,8 +90,8 @@ class App extends React.Component {
       //Means should be unchanged/untouched:
       _pageOffset=this.state.pageOffset;
     }
-    ////console.log('A1'+this.state.searchString);
-    ////console.log('A2'+_searchString);
+    //console.log('A1'+this.state.searchString);
+    //console.log('A2'+_searchString);
     if(_searchString === null || _searchString === undefined){
       _searchString=this.state.searchString;
     }
@@ -178,6 +178,12 @@ class App extends React.Component {
       return (this.callNotification());
     }
   }
+  
+  searchResultLogic(){
+    //console.log(this.state.pageTitle);
+    if(this.state.pageTitle === 'search')
+      return(<SearchResultModel data={this.state.data}/>  )
+  }
 
   //Main render method:
   render() {
@@ -187,7 +193,7 @@ class App extends React.Component {
         {this.notifyLogic() }
         <BaseHeaderModel currentUser={this.state.currentUser} setterAction={this.setStateHandler}/>
         {this.pageRenderLogic()}
-        <SearchResultModel data={this.state.data}/>        
+        {this.searchResultLogic()}     
         <BaseFooterModel setterAction={this.setStateHandler}/>
         <br></br>
         <br></br>

@@ -72,8 +72,11 @@ class UserDataModel extends React.Component{
                             aria-describedby="basic-addon1"
                             type="password"
                             />
+                <br></br>
                 </InputGroup>
                 &nbsp;&nbsp;&nbsp;<Button variant="primary" onClick={() => this.handleClick()}> &nbsp;{this.props.purpose} </Button>
+                <br></br>
+                <br></br>
             </>
         )
     }

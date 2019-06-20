@@ -118,8 +118,8 @@ class RequestController extends React.Component{
     //Get Request:
     async getRequest(){
         //Finally: do the fetch request!
-        ////console.log(this.searchString)
-        ////console.log(this.pageOffset)
+        //console.log(this.searchString)
+        //console.log(this.pageOffset)
         //if there's a NaN character in the searchString, call byName API
         let url = '';
         if(isNaN(this.searchString))
@@ -138,11 +138,12 @@ class RequestController extends React.Component{
                 .then(response => {
                     if(response.status === "OK"){
                         this.notifyOK('search');
-                        this.setter('search',response,null, null, this.pageOffset, this.searchString);
+                        this.setter('search',response, null, this.pageOffset, this.searchString);
                     }
-                    else
-                        this.notifyFail('search');
-                    //console.log(response);
+                    else{
+                        this.notifyFail('search', 'Token is invalid or expired.');
+                        this.setter('search',null, null, this.pageOffset, this.searchString);
+                    }//console.log(response);
                     
                 })
     }

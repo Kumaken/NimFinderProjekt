@@ -1,9 +1,5 @@
 //Basic Dependency:
 import React from "react";
-//Bootstrap Dependency:
-import {
-    Jumbotron,
-  }  from 'react-bootstrap';
 //Component Dependency:
 import UserDataModel from './UserDataModel.js';
 
@@ -21,13 +17,13 @@ class RegisterModel extends React.Component{
 
     registerPageLayout(){
         return(
-            <Jumbotron>
+            <>
                 <div className="col-md-4 p-2 mb-1 bg-dark text-white">
                     <h3 className="text-warning">&nbsp;Register Time! Enter your credentials here:</h3>
                 </div>
                 <br></br>
                 <UserDataModel notifyOK={this.props.notifyOK} notifyFail={this.props.notifyFail}  setterAction={this.props.setterAction} purpose={'register'} />
-            </Jumbotron>
+            </>
         )
     }
 

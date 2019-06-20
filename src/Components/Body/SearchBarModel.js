@@ -2,7 +2,6 @@
 import React from "react";
 //Bootstrap Dependency:
 import {
-    Jumbotron,
     Navbar,
     Form,
     FormControl,
@@ -49,20 +48,24 @@ class SearchBarModel extends React.Component{
 
     searchBarLayout(){
         return(
-            <Jumbotron>
+            <>
+            <br></br>
             <Navbar bg="dark" expand="lg" variant="dark">
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <InputGroup id='searchField' className="mb-3" onChange={(e) => this.updateState(e.target.value)}>
+                    <InputGroup id='searchField' className="mb-2" onChange={(e) => this.updateState(e.target.value)}>
                         <Form inline>
-                        <FormControl type="text" placeholder="Enter NIM or Name"className="mr-sm-2"/>
+                        <FormControl type="text" placeholder="Enter NIM or Name"className="mr-sm-6"/>
                         </Form>
                     </InputGroup>
                     <Button variant="outline-success" onClick={() => this.handleClick(true)}>Search!</Button>
-                    <Button variant="outline-success" onClick={() => this.handleClick(false)}>Next</Button>
                 </Navbar.Collapse>
             </Navbar>
-           
-            </Jumbotron>
+            <br></br>
+            <div className="text-center">
+                <Button  variant="secondary" onClick={() => this.handleClick(false)}>Next</Button>
+            </div>
+            <br></br>
+            </> 
         )
     }
 

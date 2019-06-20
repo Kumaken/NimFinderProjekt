@@ -25,19 +25,24 @@ class SearchResultModel extends React.Component{
             />)
     
             return (
-              <Table striped bordered hover variant="dark">
-                <thead>
-                  <tr>
-                      <th>Name</th>
-                      <th>Prodi</th>
-                      <th>NIM_TPB</th>
-                      <th>NIM_Jurusan</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {searchResult}
-                </tbody>
-              </Table>
+                <>
+                    <div className="col-md-4 p-2 mb-1 bg-dark text-white">
+                        <h3 className="text-warning">&nbsp; SEARCH RESULT:</h3>
+                    </div>
+                    <Table striped bordered hover variant="dark">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Prodi</th>
+                            <th>NIM_TPB</th>
+                            <th>NIM_Jurusan</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {searchResult}
+                        </tbody>
+                    </Table>
+              </>
             )
         }
         return null;
@@ -47,6 +52,7 @@ class SearchResultModel extends React.Component{
     searchResultLayout(){
         return(
             <>
+
                 {this.renderStudentInfos(this.props.data["payload"])}
             </>
         )

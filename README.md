@@ -34,9 +34,10 @@ npm run deploy
 ![about](screenshots/about.PNG)
 
 4. Then you get to do some login action:
-![login1](screenshots/login.PNG)
+![login](screenshots/login.PNG)
 
 5. If the account is not recognized, you will get an error notificaiton.
+![login1](screenshots/login1.PNG)
 
 6. If successful:
 ![loginOk](screenshots/loginresult1.PNG)
@@ -47,7 +48,7 @@ npm run deploy
 8. Now do the searchie-searchie, with NIM:
 ![nimsearch](screenshots/search1.PNG)
 
-9. Go to next page with searchie-searchie:
+9. Go to next page for the same query to access more data (10 entries are displayed each search action):
 ![nimsnext](screenshots/search1next.PNG)
 
 10. Searchie with Name:

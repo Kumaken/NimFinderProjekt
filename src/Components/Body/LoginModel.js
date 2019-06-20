@@ -1,9 +1,5 @@
 //Basic Dependency:
 import React from "react";
-//Bootstrap Dependency:
-import {
-    Jumbotron,
-  }  from 'react-bootstrap';
 import './Styles/Home.css';
 //Component Dependency:
 import UserDataModel from './UserDataModel.js';
@@ -24,13 +20,11 @@ class LoginModel extends React.Component{
         //console.log(this.props.notifyOK);
         return(
             <>
-            <Jumbotron>
                 <div className="col-md-4 p-2 mb-1 bg-dark text-white">
                     <h3 className="text-warning">&nbsp;Login Time! Enter your credentials here:</h3>
                 </div>
                 <br></br>
                 <UserDataModel notifyOK={this.props.notifyOK} notifyFail={this.props.notifyFail}  className="text-center " setterAction={this.props.setterAction} purpose={'login'} />
-            </Jumbotron>
             </>
         )
     }

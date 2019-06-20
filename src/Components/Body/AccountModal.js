@@ -63,7 +63,7 @@ class AccountModal extends React.Component {
                 container={this}
                 containerPadding={20}
               >
-                <Popover id="popover-contained" title="Popover bottom">
+                <Popover id="popover-contained" title="Warning!">
                     {this.popupLogic()}
                 </Popover>
               </Overlay>

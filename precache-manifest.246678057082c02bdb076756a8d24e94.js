@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dc703f15e21a7fa7e0221ccf693644c5",
+    "revision": "b8f9205a972ea063259a5e52d9213a3d",
     "url": "/NimFinderProjekt/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/NimFinderProjekt/static/css/2.9798096d.chunk.css"
   },
   {
-    "revision": "4e577708c6ed5ad8a8f1",
+    "revision": "b94bab78bf08dcdbdbb2",
     "url": "/NimFinderProjekt/static/css/main.ca3e4ca7.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/NimFinderProjekt/static/js/2.cde247d9.chunk.js"
   },
   {
-    "revision": "4e577708c6ed5ad8a8f1",
-    "url": "/NimFinderProjekt/static/js/main.1c746d10.chunk.js"
+    "revision": "b94bab78bf08dcdbdbb2",
+    "url": "/NimFinderProjekt/static/js/main.443fc885.chunk.js"
   },
   {
     "revision": "64ec826aef37050b3d99",

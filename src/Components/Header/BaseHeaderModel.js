@@ -36,7 +36,7 @@ class NavbarInstance2 extends React.Component{
                         <NavDropdown.Item onClick={() => this.props.setterAction('register')}>Register</NavDropdown.Item>
                     </NavDropdown>
                     </Nav>
-                    {console.log(this.props.currentUser)}
+                    
                     <AccountModal currentUser={this.props.currentUser} setterAction={this.props.setterAction}/>
                 </Navbar.Collapse>
             </Navbar>
@@ -46,6 +46,7 @@ class NavbarInstance2 extends React.Component{
 //Class Components:
 class BaseHeaderModel extends React.Component{
     render(){
+        //console.log('Header Rendered'+this.props.currentUser)
         return(
             <NavbarInstance2 currentUser={this.props.currentUser} setterAction={this.props.setterAction}></NavbarInstance2>
         )

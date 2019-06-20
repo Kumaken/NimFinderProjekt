@@ -63,7 +63,7 @@ class App extends React.Component {
 
   //State setter methods: (this method will be passed to children to be used there)
   async setStateHandler(targetPageTitle, newData, username, _pageOffset, _searchString){
-    //console.log("CALLED STATE CHANGER")
+    //////console.log("CALLED STATE CHANGER")
     if(newData === null || newData === undefined){
       //Means should be unchanged/untouched:
       newData=this.state.data;
@@ -90,8 +90,8 @@ class App extends React.Component {
       //Means should be unchanged/untouched:
       _pageOffset=this.state.pageOffset;
     }
-    console.log('A1'+this.state.searchString);
-    console.log('A2'+_searchString);
+    ////console.log('A1'+this.state.searchString);
+    ////console.log('A2'+_searchString);
     if(_searchString === null || _searchString === undefined){
       _searchString=this.state.searchString;
     }
@@ -109,24 +109,25 @@ class App extends React.Component {
 
   //Change to Loading State:
   async setLoadingState(){
-    console.log("Loading set to true!")
+    ////console.log("Loading set to true!")
     await this.setState({
       loading: true
     })
   }
 
   //Send Notification of LOGIN or REGISTER
-  async sendOKNotification(purpose){
-    console.log("Called Notification State Changer! OK")
-    await this.setState({
+  sendOKNotification(purpose){
+    //console.log("Called Notification State Changer! OK")
+    this.setState({
       notification : ['OK',purpose]
     })
+    //console.log("DONE SETTING notified stat")
     this.notified = false;
   }
 
   callNotification(){
     this.notified = true;
-    console.log("Called NOTIFICATION!!!")
+    //console.log("Called NOTIFICATION!!!")
     return(
       this.state.notification[0] === 'OK' ?
       (<div className="alert alert-success" role="alert">
@@ -138,25 +139,25 @@ class App extends React.Component {
     :
       (<div className="alert alert-danger" role="alert">
         <h4 className="alert-heading">Something Bad Happened!</h4>
-        <p>Aww yeah, {this.state.notification[1]} is a failure!</p>
+        <p>Oh noes, {this.state.notification[1]} is a failure!</p>
         <hr></hr>
-        <p className="mb-0">PLEASE USE YOUR BRAIN!</p>
+        <p className="mb-0">{this.state.notification[2]}</p>
       </div>)
     )
   }
 
   //Send Notification of LOGIN or REGISTER
-  async sendFailNotification(purpose){
-    console.log("Called Notification State Changer! FAIL")
-    await this.setState({
-      notification : ['OK',purpose]
+  sendFailNotification(purpose, cause){
+    //console.log("Called Notification State Changer! FAIL")
+    this.setState({
+      notification : ['Fail',purpose, cause]
     })
     this.notified = false;
   }
 
   pageRenderLogic(){
     const date = new Date();
-    console.log(this.sendOKNotification);
+    ////console.log(this.sendOKNotification);
     if(this.state.loading)
       return <LoadingModel />
     else if(this.state.pageTitle === 'about')
@@ -172,7 +173,7 @@ class App extends React.Component {
   }
   
   notifyLogic(){
-    console.log(this.notified);
+    //console.log('Are we notified: '+this.notified);
     if(this.notified === false){
       return (this.callNotification());
     }

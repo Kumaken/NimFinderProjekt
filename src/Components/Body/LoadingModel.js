@@ -7,7 +7,7 @@ import LoadingOverlay from 'react-loading-overlay';
 //class Components:
 class LoadingModel extends React.Component{
     loadingPageLayout(){
-        console.log("Loading animation rendered!");
+        //console.log("Loading animation rendered!");
         return(
             <LoadingOverlay
                 active={true}

@@ -21,7 +21,7 @@ class LoginModel extends React.Component{
 
 
     loginPageLayout(){
-        console.log(this.props.notifyOK);
+        //console.log(this.props.notifyOK);
         return(
             <>
             <Jumbotron>

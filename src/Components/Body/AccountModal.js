@@ -5,7 +5,8 @@ import {
   Button,
   Modal,
   Overlay,
-  Popover
+  Popover,
+  ButtonToolbar
 }  from 'react-bootstrap';
 
 class AccountModal extends React.Component {
@@ -15,9 +16,8 @@ class AccountModal extends React.Component {
       this.handleShow = this.handleShow.bind(this);
       this.handleClose = this.handleClose.bind(this);
       this.handleLogout = this.handleLogout.bind(this);
-
       this.handleClick = ({ target }) => {
-        this.setState(s => ({ target, show: !s.show }));
+        this.setState(s => ({ target, show: !s.show , showLogoutPopup: false}));
       };
 
       this.state = {
@@ -35,34 +35,41 @@ class AccountModal extends React.Component {
     }
 
     handleLogout(){
+      
       this.setState({ show: false, showLogoutPopup: true});
+      this.render();
+      //console.log('Set state, ready to re-erender')
       this.props.setterAction(null,{},'anonymous');
+      //console.log('set to anonymous')
     }
   
+    popupLogic(){
+      //console.log('Logic called: '+this.currentUser+ ' '+this.props.currentUser)
+      return(<><strong>Bad news!</strong> You have been logged out.</>);
+    }
+
     //use ternary rather than if-else in JSX!
     render() {
+      //console.log("RENDERING!")
       return (
         <>
+        <ButtonToolbar>
           <Button variant="primary" onClick={this.handleClick}>
-            Hello there, {this.props.currentUser}
-            <Overlay
-              show={this.state.showLogoutPopup}
-              target={this.state.target}
-              placement="bottom"
-              container={this}
-              containerPadding={20}
-            >
-              <Popover id="popover-contained">
-                {
-                this.props.currentUser === 'anonymous' ? 
-                <><strong>Hellow dummy?</strong> You <strong>HAVE ALREADY BEEN</strong> logged out!</>
-                :
-                <><strong>Bad news!</strong> You have been logged out.</>
-                }
-              </Popover>
-            </Overlay>
+            Hello there, {this.props.currentUser} </Button>
+              <Overlay
+                show={this.state.showLogoutPopup}
+                target={this.state.target}
+                placement="bottom"
+                container={this}
+                containerPadding={20}
+              >
+                <Popover id="popover-contained" title="Popover bottom">
+                    {this.popupLogic()}
+                </Popover>
+              </Overlay>
 
-          </Button>
+          
+        </ButtonToolbar>
   
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>

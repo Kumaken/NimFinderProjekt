@@ -63,19 +63,21 @@ class RequestController extends React.Component{
                 .then(response => {
                     if(response.status === "OK"){
                         this.notifyOK('register');
+                        this.setter(this.pageTitle,response,null);
                     }
                     else{
-                        this.notifyFail('register');
+                        this.notifyFail('register','username is already taken or invalid data!');
+                        this.setter();
                     }
-                    console.log(response);
-                    this.setter(this.pageTitle,response,null);
+                    //console.log(response);
+                    
                 })
     }
 
     //Login Request:
     async loginRequest(){
         //Data to be sent:
-        console.log(this.notifyOK);
+        //console.log(this.notifyOK);
         let dataDetails = {
             'username' : this.username,
             'password' : this.password
@@ -100,20 +102,24 @@ class RequestController extends React.Component{
             })
                 .then(response => response.json())
                 .then(response => {
-                    if(response.status === "OK")
+                    if(response.status === "OK"){
                         this.notifyOK('login');
-                    else
-                        this.notifyFail('login');
-                    console.log(response);
-                    this.setter(this.pageTitle,response,this.username);
+                        this.setter(this.pageTitle,response,this.username);
+                    }
+                    else{
+                        this.notifyFail('login', 'Invalid username or password!');
+                        this.setter();
+                    }
+                    //console.log(this.username);
+                    
                 })
     }
 
     //Get Request:
     async getRequest(){
         //Finally: do the fetch request!
-        console.log(this.searchString)
-        console.log(this.pageOffset)
+        ////console.log(this.searchString)
+        ////console.log(this.pageOffset)
         //if there's a NaN character in the searchString, call byName API
         let url = '';
         if(isNaN(this.searchString))
@@ -130,12 +136,14 @@ class RequestController extends React.Component{
             })
                 .then(response => response.json())
                 .then(response => {
-                    if(response.status === "OK")
+                    if(response.status === "OK"){
                         this.notifyOK('search');
+                        this.setter('search',response,null, null, this.pageOffset, this.searchString);
+                    }
                     else
                         this.notifyFail('search');
-                    console.log(response);
-                    this.setter('search',response,null, null, this.searchString);
+                    //console.log(response);
+                    
                 })
     }
 }

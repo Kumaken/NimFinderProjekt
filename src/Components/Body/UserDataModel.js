@@ -28,22 +28,22 @@ class UserDataModel extends React.Component{
     }
 
     async fillUserData(_usernameval, _passwordval){
-        console.log("fill User Data called: " + _usernameval + " & "+ _passwordval);
+        //console.log("fill User Data called: " + _usernameval + " & "+ _passwordval);
         if(_usernameval === null)
             _usernameval = this.state.usernameval;
         if(_passwordval === null)
             _passwordval = this.state.passwordval;
-        console.log("before change: " + _usernameval + " & "+ _passwordval);
+        //console.log("before change: " + _usernameval + " & "+ _passwordval);
         //SetState is an asynchronous function, use await!
         await this.setState({
             usernameval: _usernameval,
             passwordval: _passwordval
         })
-        console.log("Final state condition: " + this.state.usernameval + " & "+ this.state.passwordval);
+        //console.log("Final state condition: " + this.state.usernameval + " & "+ this.state.passwordval);
     }
 
     async handleClick(){
-        console.log(this.props.notifyOK);
+        //console.log(this.props.notifyOK);
         //this.fillUserData(document.getElementById('usernamefield').value, document.getElementById('passwordfield').value);
         let controller = new ControllerBuilder().withSetter(this.props.setterAction).withUserCredentials(this.state.usernameval, this.state.passwordval).withPurpose(this.props.purpose).withNotifier(this.props.notifyOK,this.props.notifyFail).build();
         await controller.requestLogic();

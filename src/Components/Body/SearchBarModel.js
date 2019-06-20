@@ -26,26 +26,24 @@ class SearchBarModel extends React.Component{
     }
 
     async updateState(_searchString){
-        console.log('INCOMING: '+_searchString)
+        //console.log('INCOMING: '+_searchString)
         await this.setState({
             searchString: _searchString
         })
-        console.log('NOW: '+this.state.searchString);
+        //console.log('NOW: '+this.state.searchString);
     }
 
     async handleClick(reset){
-        console.log(">>>>>>>"+this.props.searchString)
-        if(reset)
-            this.props.setterAction(null,null,null,0, this.state.searchString)
-        else{
-            this.props.setterAction(null,null,null,this.props.pageOffset + 1, null)
+        //console.log(">>>>>>>"+this.props.searchString)
+        if(!reset){
+            //this.props.setterAction(null,null,null,this.props.pageOffset + 1, null)
             await this.setState({
                 searchString: this.props.searchString,
                 pageOffset: this.props.pageOffset+1
             })
         }
         let controller = new ControllerBuilder().withSetter(this.props.setterAction).withPurpose(this.props.purpose).withSearchString(this.state.searchString).withToken(this.props.token).withNotifier(this.props.notifyOK,this.props.notifyFail).withPageOffset(this.state.pageOffset).withSearchString(this.state.searchString).build()
-        console.log(controller.searchString)
+        //console.log(controller.searchString)
         await controller.requestLogic();
     }
 
@@ -69,7 +67,7 @@ class SearchBarModel extends React.Component{
     }
 
     render(){
-        console.log(this.state.searchString)
+        //console.log(this.state.searchString)
         return( 
             <>
                 {this.searchBarLayout()}

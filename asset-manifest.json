@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Kumaken.github.io/NimFinderProjekt/static/css/main.d652f45d.chunk.css",
-    "main.js": "/Kumaken.github.io/NimFinderProjekt/static/js/main.b64dd4f1.chunk.js",
-    "main.js.map": "/Kumaken.github.io/NimFinderProjekt/static/js/main.b64dd4f1.chunk.js.map",
-    "runtime~main.js": "/Kumaken.github.io/NimFinderProjekt/static/js/runtime~main.f7288d97.js",
-    "runtime~main.js.map": "/Kumaken.github.io/NimFinderProjekt/static/js/runtime~main.f7288d97.js.map",
-    "static/css/2.9798096d.chunk.css": "/Kumaken.github.io/NimFinderProjekt/static/css/2.9798096d.chunk.css",
-    "static/js/2.631616c7.chunk.js": "/Kumaken.github.io/NimFinderProjekt/static/js/2.631616c7.chunk.js",
-    "static/js/2.631616c7.chunk.js.map": "/Kumaken.github.io/NimFinderProjekt/static/js/2.631616c7.chunk.js.map",
-    "index.html": "/Kumaken.github.io/NimFinderProjekt/index.html",
-    "precache-manifest.5bbe819001ef87194c7df174c410707d.js": "/Kumaken.github.io/NimFinderProjekt/precache-manifest.5bbe819001ef87194c7df174c410707d.js",
-    "service-worker.js": "/Kumaken.github.io/NimFinderProjekt/service-worker.js",
-    "static/css/2.9798096d.chunk.css.map": "/Kumaken.github.io/NimFinderProjekt/static/css/2.9798096d.chunk.css.map",
-    "static/css/main.d652f45d.chunk.css.map": "/Kumaken.github.io/NimFinderProjekt/static/css/main.d652f45d.chunk.css.map",
-    "static/media/aboutme.jpg": "/Kumaken.github.io/NimFinderProjekt/static/media/aboutme.83f52596.jpg",
-    "static/media/login.jpg": "/Kumaken.github.io/NimFinderProjekt/static/media/login.5f65b3e4.jpg",
-    "static/media/register.jpg": "/Kumaken.github.io/NimFinderProjekt/static/media/register.abfc7013.jpg",
-    "static/media/search.jpg": "/Kumaken.github.io/NimFinderProjekt/static/media/search.477ea618.jpg"
+    "main.css": "/NimFinderProjekt/static/css/main.d652f45d.chunk.css",
+    "main.js": "/NimFinderProjekt/static/js/main.02a041cc.chunk.js",
+    "main.js.map": "/NimFinderProjekt/static/js/main.02a041cc.chunk.js.map",
+    "runtime~main.js": "/NimFinderProjekt/static/js/runtime~main.34465a7b.js",
+    "runtime~main.js.map": "/NimFinderProjekt/static/js/runtime~main.34465a7b.js.map",
+    "static/css/2.9798096d.chunk.css": "/NimFinderProjekt/static/css/2.9798096d.chunk.css",
+    "static/js/2.631616c7.chunk.js": "/NimFinderProjekt/static/js/2.631616c7.chunk.js",
+    "static/js/2.631616c7.chunk.js.map": "/NimFinderProjekt/static/js/2.631616c7.chunk.js.map",
+    "index.html": "/NimFinderProjekt/index.html",
+    "precache-manifest.e5970a308f68f5798406263959e5efe5.js": "/NimFinderProjekt/precache-manifest.e5970a308f68f5798406263959e5efe5.js",
+    "service-worker.js": "/NimFinderProjekt/service-worker.js",
+    "static/css/2.9798096d.chunk.css.map": "/NimFinderProjekt/static/css/2.9798096d.chunk.css.map",
+    "static/css/main.d652f45d.chunk.css.map": "/NimFinderProjekt/static/css/main.d652f45d.chunk.css.map",
+    "static/media/aboutme.jpg": "/NimFinderProjekt/static/media/aboutme.83f52596.jpg",
+    "static/media/login.jpg": "/NimFinderProjekt/static/media/login.5f65b3e4.jpg",
+    "static/media/register.jpg": "/NimFinderProjekt/static/media/register.abfc7013.jpg",
+    "static/media/search.jpg": "/NimFinderProjekt/static/media/search.477ea618.jpg"
   }
 }

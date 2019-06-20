@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b8f9205a972ea063259a5e52d9213a3d",
+    "revision": "5a7fbb642567d521b66066ec7214a9bc",
     "url": "/NimFinderProjekt/index.html"
   },
   {
-    "revision": "0a156b0642e5da6c974d",
+    "revision": "a545e99673922d833658",
     "url": "/NimFinderProjekt/static/css/2.9798096d.chunk.css"
   },
   {
-    "revision": "b94bab78bf08dcdbdbb2",
+    "revision": "90d1f12ccaeac2c35829",
     "url": "/NimFinderProjekt/static/css/main.ca3e4ca7.chunk.css"
   },
   {
-    "revision": "0a156b0642e5da6c974d",
-    "url": "/NimFinderProjekt/static/js/2.cde247d9.chunk.js"
+    "revision": "a545e99673922d833658",
+    "url": "/NimFinderProjekt/static/js/2.4e03b3e0.chunk.js"
   },
   {
-    "revision": "b94bab78bf08dcdbdbb2",
-    "url": "/NimFinderProjekt/static/js/main.443fc885.chunk.js"
+    "revision": "90d1f12ccaeac2c35829",
+    "url": "/NimFinderProjekt/static/js/main.40afc960.chunk.js"
   },
   {
     "revision": "64ec826aef37050b3d99",

@@ -93,10 +93,10 @@ Request Controller manages sending various requests to the API and storing the r
 Refresh Controller plays part in determining whether the page is loading or not (waiting for API call).
 
 ##Library:
-1. ![react.js](https://www.npmjs.com/package/react)
-2. ![react-browser-detection](https://www.npmjs.com/package/react-browser-detection)
-3. ![react-loading-overlay](https://www.npmjs.com/package/react-loading-overlay)
-4. ![react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
+1. [react.js](https://www.npmjs.com/package/react)
+2. [react-browser-detection](https://www.npmjs.com/package/react-browser-detection)
+3. [react-loading-overlay](https://www.npmjs.com/package/react-loading-overlay)
+4. [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
 
 ##Review:
 Nice API. Easy to use and quick response. API's endpoints are clear and precise while providing the service expected of it. Would be nice though, if the API could also return entry count as a result of a search request. It would make pagination endeavor much easier.

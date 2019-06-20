@@ -18,11 +18,15 @@ class SearchModel extends React.Component{
 
 
 
+
     searchPageLayout(){
         return(
             <Jumbotron>
-                <p> SEARCH ASSHOLE </p>
-                <SearchBarModel setterAction={this.props.setterAction} purpose={'search'} token={this.props.token}/>
+                <div className="col-md-4 p-2 mb-1 bg-dark text-white">
+                    <h3 className="text-warning">&nbsp;Stalking TIME!</h3>
+                </div>
+                <br></br>
+                <SearchBarModel searchString={this.props.searchString} pageOffset={this.props.pageOffset} notifyOK={this.props.notifyOK} notifyFail={this.props.notifyFail}  setterAction={this.props.setterAction} purpose={'search'} token={this.props.token}/>
             </Jumbotron>
         )
     }

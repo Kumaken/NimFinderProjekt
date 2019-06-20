@@ -13,6 +13,7 @@ import {
 //Components Dependency
 //import ClickHandlers from "../../Controllers/ClickHandlers";
 import ControllerBuilder from "./../../Controllers/ControllerBuilder";
+import Style from './Styles/UserData.css';
 
 class UserDataModel extends React.Component{
     constructor(props){
@@ -42,16 +43,17 @@ class UserDataModel extends React.Component{
     }
 
     async handleClick(){
+        console.log(this.props.notifyOK);
         //this.fillUserData(document.getElementById('usernamefield').value, document.getElementById('passwordfield').value);
-        let controller = new ControllerBuilder().withSetter(this.props.setterAction).withUserCredentials(this.state.usernameval, this.state.passwordval).withPurpose(this.props.purpose).build();
+        let controller = new ControllerBuilder().withSetter(this.props.setterAction).withUserCredentials(this.state.usernameval, this.state.passwordval).withPurpose(this.props.purpose).withNotifier(this.props.notifyOK,this.props.notifyFail).build();
         await controller.requestLogic();
     }
 
     render(){
         return(
-            <>
-                <InputGroup id='usernamefield' className="mb-3" onChange={(e) => this.fillUserData(e.target.value, null)}>
-                            <InputGroup.Prepend>
+            <>  
+                <InputGroup id='usernamefield' className="mb-3 col-sm-4 center-block" onChange={(e) => this.fillUserData(e.target.value, null)}>
+                            <InputGroup.Prepend className="center-block">
                             <InputGroup.Text id="username">Username :</InputGroup.Text>
                             </InputGroup.Prepend>
                             <FormControl
@@ -60,7 +62,7 @@ class UserDataModel extends React.Component{
                             aria-describedby="basic-addon1"
                             />
                 </InputGroup>
-                <InputGroup id='passwordfield' className="mb-3" onChange={(e) => this.fillUserData(null, e.target.value)}>
+                <InputGroup id='passwordfield' className="mb-3 col-sm-4 text-center" onChange={(e) => this.fillUserData(null, e.target.value)}>
                             <InputGroup.Prepend>
                             <InputGroup.Text id="basic-addon1">Password &nbsp;:</InputGroup.Text>
                             </InputGroup.Prepend>
@@ -71,7 +73,7 @@ class UserDataModel extends React.Component{
                             type="password"
                             />
                 </InputGroup>
-                <Button variant="primary" onClick={() => this.handleClick()}> {this.props.purpose} </Button>
+                &nbsp;&nbsp;&nbsp;<Button variant="primary" onClick={() => this.handleClick()}> &nbsp;{this.props.purpose} </Button>
             </>
         )
     }

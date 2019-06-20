@@ -22,8 +22,11 @@ class RegisterModel extends React.Component{
     registerPageLayout(){
         return(
             <Jumbotron>
-                <p> Register ASSHOLE </p>
-                <UserDataModel setterAction={this.props.setterAction} purpose={'register'} />
+                <div className="col-md-4 p-2 mb-1 bg-dark text-white">
+                    <h3 className="text-warning">&nbsp;Register Time! Enter your credentials here:</h3>
+                </div>
+                <br></br>
+                <UserDataModel notifyOK={this.props.notifyOK} notifyFail={this.props.notifyFail}  setterAction={this.props.setterAction} purpose={'register'} />
             </Jumbotron>
         )
     }

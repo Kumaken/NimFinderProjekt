@@ -31,3 +31,18 @@
     transform: rotate(360deg);
   }
 }
+
+body, html {
+  height: 100vh;
+}
+
+.bcg {
+  background-image: url("https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif");
+  min-height: 100vh;
+  height:auto;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  background-attachment:fixed;
+}
+

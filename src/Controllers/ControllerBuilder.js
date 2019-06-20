@@ -45,6 +45,22 @@ class ControllerBuilder{
         return this
     }
 
+    withNotifier(_OK, _Fail){
+        this.notifyOK = _OK;
+        this.notifyFail = _Fail;
+        return this
+    }
+
+    withPageOffset(_pageOffset){
+        this.pageOffset = _pageOffset;
+        return this
+    }
+
+    withSearchString(_searchString){
+        this.searchString = _searchString;
+        return this;
+    }
+
     build(){
         return new RequestController(this);
     }

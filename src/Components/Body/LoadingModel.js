@@ -10,7 +10,6 @@ class LoadingModel extends React.Component{
         console.log("Loading animation rendered!");
         return(
             <LoadingOverlay
-                height="2000"
                 active={true}
                 spinner
                 text='LOADING'

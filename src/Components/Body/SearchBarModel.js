@@ -18,6 +18,7 @@ class SearchBarModel extends React.Component{
         super(props);
         this.state = {
             searchString: '',
+            pageOffset: 0
         }
         //Bindings:
         this.searchBarLayout = this.searchBarLayout.bind(this);
@@ -32,9 +33,18 @@ class SearchBarModel extends React.Component{
         console.log('NOW: '+this.state.searchString);
     }
 
-    async handleClick(){
-        console.log(this.state.searchString)
-        let controller = new ControllerBuilder().withSetter(this.props.setterAction).withPurpose(this.props.purpose).withSearchString(this.state.searchString).withToken(this.props.token).build()
+    async handleClick(reset){
+        console.log(">>>>>>>"+this.props.searchString)
+        if(reset)
+            this.props.setterAction(null,null,null,0, this.state.searchString)
+        else{
+            this.props.setterAction(null,null,null,this.props.pageOffset + 1, null)
+            await this.setState({
+                searchString: this.props.searchString,
+                pageOffset: this.props.pageOffset+1
+            })
+        }
+        let controller = new ControllerBuilder().withSetter(this.props.setterAction).withPurpose(this.props.purpose).withSearchString(this.state.searchString).withToken(this.props.token).withNotifier(this.props.notifyOK,this.props.notifyFail).withPageOffset(this.state.pageOffset).withSearchString(this.state.searchString).build()
         console.log(controller.searchString)
         await controller.requestLogic();
     }
@@ -44,21 +54,22 @@ class SearchBarModel extends React.Component{
             <Jumbotron>
             <Navbar bg="dark" expand="lg" variant="dark">
                 <Navbar.Collapse id="basic-navbar-nav">
-                    
                     <InputGroup id='searchField' className="mb-3" onChange={(e) => this.updateState(e.target.value)}>
                         <Form inline>
                         <FormControl type="text" placeholder="Enter NIM or Name"className="mr-sm-2"/>
                         </Form>
                     </InputGroup>
-                    <Button variant="outline-success" onClick={() => this.handleClick()}>Search!</Button>
-                    
+                    <Button variant="outline-success" onClick={() => this.handleClick(true)}>Search!</Button>
+                    <Button variant="outline-success" onClick={() => this.handleClick(false)}>Next</Button>
                 </Navbar.Collapse>
             </Navbar>
+           
             </Jumbotron>
         )
     }
 
     render(){
+        console.log(this.state.searchString)
         return( 
             <>
                 {this.searchBarLayout()}

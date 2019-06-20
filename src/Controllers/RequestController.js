@@ -17,6 +17,12 @@ class RequestController extends React.Component{
         this.token = builder.token;
         this.searchString = builder.searchString;
         this.count = builder.count;
+        this.notifyOK = builder.notifyOK;
+        this.notifyFail = builder.notifyFail;
+        this.pageOffset = builder.pageOffset;
+        this.searchString = builder.searchString;
+        //Bindings:
+        this.loginRequest = this.loginRequest.bind(this);
     }
 
     requestLogic(){
@@ -55,6 +61,12 @@ class RequestController extends React.Component{
             })
                 .then(response => response.json())
                 .then(response => {
+                    if(response.status === "OK"){
+                        this.notifyOK('register');
+                    }
+                    else{
+                        this.notifyFail('register');
+                    }
                     console.log(response);
                     this.setter(this.pageTitle,response,null);
                 })
@@ -63,8 +75,7 @@ class RequestController extends React.Component{
     //Login Request:
     loginRequest(){
         //Data to be sent:
-        console.log(this.username);
-        console.log(this.password);
+        console.log(this.notifyOK);
         let dataDetails = {
             'username' : this.username,
             'password' : this.password
@@ -89,6 +100,10 @@ class RequestController extends React.Component{
             })
                 .then(response => response.json())
                 .then(response => {
+                    if(response.status === "OK")
+                        this.notifyOK('login');
+                    else
+                        this.notifyFail('login');
                     console.log(response);
                     this.setter(this.pageTitle,response,this.username);
                 })
@@ -98,13 +113,14 @@ class RequestController extends React.Component{
     async getRequest(){
         //Finally: do the fetch request!
         console.log(this.searchString)
+        console.log(this.pageOffset)
         //if there's a NaN character in the searchString, call byName API
         let url = '';
         if(isNaN(this.searchString))
             url = `${this.baseURL}byname?name=`;
         else
             url = `${this.baseURL}byid?query=`;
-        await fetch(`${url}${this.searchString}&count=${this.count}`, 
+        await fetch(`${url}${this.searchString}&count=${this.count}&page=${this.pageOffset}`, 
             {
                 method: 'GET',
                 headers: {
@@ -113,9 +129,13 @@ class RequestController extends React.Component{
         
             })
                 .then(response => response.json())
-                .then(response => { 
+                .then(response => {
+                    if(response.status === "OK")
+                        this.notifyOK('search');
+                    else
+                        this.notifyFail('search');
                     console.log(response);
-                    this.setter(this.pageTitle,response,null);
+                    this.setter('search',response,null, null, this.searchString);
                 })
     }
 }

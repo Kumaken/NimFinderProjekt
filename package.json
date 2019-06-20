@@ -2,8 +2,10 @@
   "name": "nim-finder-projekt",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kumaken.github.io/NimFinderProjekt/",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "gh-pages": "^2.0.1",
     "html-react-parser": "^0.7.1",
     "jquery": "^3.4.1",
     "mdbreact": "^4.16.0",
@@ -21,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -2,6 +2,8 @@
 A simple one-page NIM finder web-app for ITB students
 Created by Abel Stanley / 13517068
 
+Link to github page: https://kumaken.github.io/NimFinderProjekt/
+
 ## HOW TO RUN:
 ### Install all dependencies:
 1. Install React:
@@ -28,7 +30,7 @@ npm run deploy
 ![Homepage](screenshots/homepage1.PNG)
 
 2. Look at the 'Getting Started' guide to get you acquainted with the website:
-![GettingStarted](screenshots/gettingStarted.PNG)
+![GettingStarted](screenshots/gettingStarted.png)
 
 3. View the minimalistic about me page, just in case you don't have anything better to do:
 ![about](screenshots/about.PNG)
